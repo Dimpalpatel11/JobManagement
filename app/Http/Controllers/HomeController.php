@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
+use App\JobApplication;
+use Illuminate\Support\Facades\Input;
+use Session;
 
 class HomeController extends Controller
 {
@@ -23,12 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-    }
-
-    public function adminindex()
-    {
-      dd('1');
-        return view('home');
+        $jobs = JobApplication::all();
+        return view('home',compact('jobs'));
     }
 }

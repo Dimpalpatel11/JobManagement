@@ -14,11 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::post('/submitJobsubmission', 'JobController@submitJobsubmission')->name('submitJobsubmission');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+
 Route::group(['middleware' => ['web']], function(){
+Route::get('/editjob/{id}', 'JobController@editjob')->name('editJob');
+Route::post('/editJobsubmission', 'JobController@editJobsubmission')->name('editJobsubmission');
+Route::get('/Viewjob/{id}', 'JobController@Viewjob')->name('viewJob');
+Route::get('/deletejob/{id}', 'JobController@deletejob')->name('deleteJob');
   Route::group(['prefix' => 'admin' , 'middleware' => ['role:admin']], function(){
       Route::get('/dashboard', 'HomeController@adminindex');
   });

@@ -10,14 +10,19 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('public/js/app.js') }}" defer></script>
 
+    <script src="{{ asset('public/js/app.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/assets/datepicker/datepicker3.css') }}" rel="stylesheet">
+<style>
+  .custom-control-label:after, .custom-control-label:before{content:none;}
+</style>
 </head>
 <body>
     <div id="app">
@@ -37,17 +42,12 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto pull-right">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -74,7 +74,14 @@
 
         <main class="py-4">
             @yield('content')
+
         </main>
     </div>
+    <script src="{{ asset('resources/js/jquery-2.2.4.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('resources/assets/jQuery-validation-plugin/jquery.validate.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('resources/assets/jQuery-validation-plugin/additional-methods.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('resources/assets/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('resources/assets/datepicker/bootstrap-datepicker.js') }}" type="text/javascript"></script>
+      @yield('script')
 </body>
 </html>
